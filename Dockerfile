@@ -1,9 +1,8 @@
 # Build stage
-FROM node:18.12.1-alpine3.16 AS build
+FROM node:18.12.1-alpine3.17 AS build
 WORKDIR /build
 
-RUN apk update \
-  && apk add openssl1.1-compat
+RUN apk update && apk add openssl1.1-compat
 
 # Install modules with dev dependencies
 COPY package.json yarn.lock /build/
@@ -19,7 +18,7 @@ RUN rm -rf ./node_modules
 RUN yarn install --production --frozen-lockfile
 
 # Bundle stage
-FROM node:18.12.1-alpine3.16 AS production
+FROM node:18.12.1-alpine3.17 AS production
 
 WORKDIR /app
 
