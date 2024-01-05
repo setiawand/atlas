@@ -2,7 +2,7 @@
 FROM node:alpine3.16 AS build
 WORKDIR /build
 
-RUN apk update && apk add openssl1.1-compat
+# RUN apk update && apk add openssl1.1-compat
 
 # Install modules with dev dependencies
 COPY package.json yarn.lock /build/
