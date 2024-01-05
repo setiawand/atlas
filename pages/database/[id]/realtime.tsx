@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Status, Spinner, Nav, DatabaseSidebar, Container } from '@components'
 import { useApi, useValidSession, useInterval } from '@hooks'
 import { useRouter } from 'next/router'
-import ansi from 'ansi_up'
+import ansi, { AnsiUp } from 'ansi_up'
 
 export default function Realtime() {
 	const [database, setDatabase] = useState<any>(null)
@@ -24,7 +24,7 @@ export default function Realtime() {
 	}, 10000)
 
 	function ansiToHtml(logs) {
-		let convert = new ansi()
+		let convert = new AnsiUp()
 		return convert.ansi_to_html(logs)
 	}
 

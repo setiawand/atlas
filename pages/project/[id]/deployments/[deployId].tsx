@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import * as timeago from 'timeago.js'
 import toast from 'react-hot-toast'
 import css from 'classnames'
-import ansi from 'ansi_up'
+import ansi, { AnsiUp } from 'ansi_up'
 
 export default function Deployments() {
 	const [project, setProject] = useState<any>({})
@@ -92,7 +92,7 @@ export default function Deployments() {
 	}
 
 	function parseToHtml(logs) {
-		let convert = new ansi()
+		let convert = new AnsiUp()
 		logs = convert.ansi_to_html(logs)
 
 		logs = logs.replace(

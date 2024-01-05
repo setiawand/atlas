@@ -34,7 +34,8 @@ export async function builder(payload) {
 }
 
 export async function appendToLogs({ deploymentId, projectId, chunk, type }) {
-	let { logs } = await prisma.deployments.findUnique({
+	// let { logs } = 
+	let logs = await prisma.deployments.findUnique({
 		where: { id: deploymentId },
 		select: { logs: true },
 	})
@@ -78,7 +79,7 @@ function getStatusViaLogs(logs, projectId) {
 }
 
 async function updateCompleteStatus(id) {
-	let { logs } = await prisma.deployments.findUnique({
+	let logs = await prisma.deployments.findUnique({
 		where: { id: id },
 		select: { logs: true },
 	})
